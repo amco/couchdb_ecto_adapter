@@ -1,20 +1,12 @@
-# Sis
+# WIP CouDB adapter
+Demo proyect to design a viable couchdb adapter for ecto.
+Currently it can do inserts, get  and simple queries
 
-To start your Phoenix server:
+`Sis.Repo.insert %User{}`
+`Sis.Repo.get User, "ID"`
+`Sis.Repo.all from u in User, where: u.first_name == "Juan" and u.last_name == "Perez", select: %{first_name: u.first_name}`
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+Still deciding if the adapter should handle basic Mango indexes for doing where queries. I found easy to do it for `and` concatenations.
+But is imposible or very hard for `or` chains, for `or` chains though, doing a `MapView` will work pretty fast.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Maybe I will just do a generator so ona dding a Repo it will add the views and indexes... yeah I like this last...
